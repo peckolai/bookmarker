@@ -1,0 +1,65 @@
+AllCops:
+  NewCops: enable
+
+# Offense count: 1
+Metrics/CyclomaticComplexity:
+  Max: 9
+
+# Offense count: 2
+# Configuration parameters: CountComments, CountAsOne, ExcludedMethods, IgnoredMethods.
+Metrics/MethodLength:
+  Max: 12
+
+# Offense count: 1
+# Configuration parameters: IgnoredMethods.
+Metrics/PerceivedComplexity:
+  Max: 9
+
+# Offense count: 2
+# Configuration parameters: AllowedConstants.
+Style/Documentation:
+  Enabled: false
+
+# Offense count: 26
+# Cop supports --auto-correct.
+# Configuration parameters: EnforcedStyle.
+# SupportedStyles: always, always_true, never
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# Offense count: 1
+# Cop supports --auto-correct.
+Style/GlobalStdStream:
+  Exclude:
+    - 'config/environments/production.rb'
+
+# Offense count: 1
+# Cop supports --auto-correct.
+Style/IfUnlessModifier:
+  Exclude:
+    - 'bin/bundle'
+
+# Offense count: 2
+# Cop supports --auto-correct.
+# Configuration parameters: SafeForConstants.
+Style/RedundantFetchBlock:
+  Exclude:
+    - 'config/puma.rb'
+
+# Offense count: 1
+# Cop supports --auto-correct.
+# Configuration parameters: .
+# SupportedStyles: use_perl_names, use_english_names
+Style/SpecialGlobalVars:
+  EnforcedStyle: use_perl_names
+
+# Offense count: 1
+# Cop supports --auto-correct.
+# Configuration parameters: AutoCorrect, AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
+# URISchemes: http, https
+Layout/LineLength:
+  Max: 198
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
