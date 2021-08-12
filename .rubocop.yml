@@ -63,3 +63,7 @@ Layout/LineLength:
 Style/ClassAndModuleChildren:
   Enabled: false
 
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+

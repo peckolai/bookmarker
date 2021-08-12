@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe BaseSerializer, type: :serializer do
-  let(:resource) { FactoryBot.create(:user) }
+  let(:resource) { create(:user) }
   let(:serialized_resource) { described_class.new(resource).as_json }
 
   subject { serialized_resource[:base] }
@@ -18,4 +18,3 @@ RSpec.describe BaseSerializer, type: :serializer do
     expect(subject[:updated_at]).to eq(resource.updated_at)
   end
 end
-

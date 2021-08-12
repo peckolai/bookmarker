@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "Api::V1::Users", type: :request do
-  describe "POST /api/v1/users" do
+RSpec.describe 'Api::V1::Users', type: :request do
+  describe 'POST /api/v1/users' do
     let(:user_params) do
       { email: 'user@duetcode.io', password: 'samplepassword' }
     end

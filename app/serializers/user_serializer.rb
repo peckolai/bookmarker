@@ -1,3 +1,3 @@
-class UserSerializer < BaseSerializer 
+class UserSerializer < BaseSerializer
   attributes :email
 end
