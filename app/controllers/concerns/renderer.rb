@@ -1,5 +1,5 @@
 module Renderer
-  def render_object(resource, **options )
+  def render_object(resource, **options)
     options.merge!(json: resource, root: :data)
     options.merge!(status: :ok) unless options.key?(:status)
 
