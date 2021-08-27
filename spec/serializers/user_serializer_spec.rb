@@ -10,4 +10,3 @@ RSpec.describe UserSerializer, type: :serializer do
     expect(subject[:email]).to eq('user@duetcode.io')
   end
 end
-

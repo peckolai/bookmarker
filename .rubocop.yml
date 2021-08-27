@@ -66,4 +66,5 @@ Style/ClassAndModuleChildren:
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
+    - 'app/controllers/swagger/**/*'
 
