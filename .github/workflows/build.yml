@@ -1,0 +1,49 @@
+on:
+  pull_request:
+    branches:
+    - develop
+    types: [opened, synchronize, reopened]
+jobs:
+  sonarcloud:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        bundler-cache: true
+    - name: Fetch Modified Files
+      id: modified_files
+      run: |
+        git fetch origin ${{ github.event.pull_request.base.ref }} --depth=1
+        git diff --name-only origin/${{ github.event.pull_request.base.ref }} > modified_files.txt
+    - name: Run RuboCop
+      run: |
+        echo $GITHUB_REPOSITORY
+
+        if [ -s modified_files.txt ]; then
+            bundle exec rubocop $(cat modified_files.txt | grep '\.rb$') --format json --out rubocop_report.json || true
+        else
+            echo "No Ruby files modified in this PR."
+        fi
+    - name: Setup Java
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'adopt'
+        java-version: '11'
+    - name: Compile Java
+      run: |
+        mkdir -p target/classes
+        javac -Xlint:none -d target/classes $(find . -name "*.java") || true
+    - name: SonarCloud Scan
+      uses: SonarSource/sonarcloud-github-action@master
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      with:
+        args: >
+          -Dsonar.sources=.
+          -Dsonar.ruby.rubocop.reportPaths=rubocop_report.json
+          -Dsonar.java.binaries=target/classes
+          -Dsonar.exclusions=vendor/**
