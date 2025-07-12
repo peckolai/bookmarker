@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.7.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-gem 'rails', '~> 6.1.4'
+gem 'rails', '~> 7.1.0'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 # Use Puma as the app server
@@ -13,9 +13,9 @@ gem 'puma', '~> 5.0'
 # gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-gem 'devise'
+gem 'devise', '>= 4.8.1'
 
-gem 'active_model_serializers', '~>0.8.4'
+gem 'active_model_serializers', '~> 0.9.0'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -29,8 +29,8 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
 
-  gem 'factory_bot_rails', '~> 5.2'
-  gem 'rspec-rails', '~> 4.0'
+  gem 'factory_bot_rails', '~> 6.0', '>= 6.0.0'
+  gem 'rspec-rails', '~> 5.0', '>= 5.0.0'
   gem 'rubocop', require: false
 end
 
@@ -39,7 +39,7 @@ group :development do
 end
 
 group :test do
-  gem 'shoulda-matchers'
+  gem 'shoulda-matchers', '>= 5.1.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
